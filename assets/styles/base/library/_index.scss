@@ -1,0 +1,15 @@
+@use "@/assets/styles/abstracts" as *;
+
+.section__wrapper {
+	width: 100%;
+	display: grid;
+	place-items: center;
+}
+
+.section {
+	width: 100%;
+	max-width: 144rem;
+	@include padding-on(top, 18, 59);
+	@include padding-on(right, 18, 102);
+	@include padding-on(left, 18, 102);
+}

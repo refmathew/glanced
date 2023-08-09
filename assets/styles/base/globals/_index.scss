@@ -1,0 +1,12 @@
+@use "../../abstracts" as *;
+
+html {
+	scroll-behavior: smooth;
+	font-size: 62.5%;
+}
+body {
+	font-size: 1.6rem;
+	font-family: "Goudy Bookletter 1911", serif;
+	font-weight: 400;
+	color: $secondary;
+}

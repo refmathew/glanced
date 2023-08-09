@@ -1,0 +1,11 @@
+// @forward "functions" as f-*;
+// @forward "mixins" as m-*;
+// @forward "variables" as v-*;
+
+// @use "functions" as *;
+// @use "mixins" as *;
+// @use "variables" as *;
+
+@forward "functions";
+@forward "mixins";
+@forward "variables";

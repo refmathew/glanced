@@ -1,0 +1,118 @@
+@use "./variables" as var;
+@use "./functions" as fn;
+
+@mixin width($min, $max) {
+	width: fn.clampify($min, $max);
+}
+
+@mixin height($min, $max) {
+	height: fn.clampify($min, $max);
+}
+
+@mixin gap($min, $max) {
+	gap: fn.clampify($min, $max);
+}
+
+@mixin text-size($min, $max) {
+	font-size: fn.clampify($min, $max);
+}
+
+@mixin leading($min, $max) {
+	line-height: fn.clampify($min, $max);
+}
+
+@mixin padding-on($edge, $min, $max) {
+	padding-#{$edge}: fn.clampify($min, $max);
+}
+
+@mixin padding($min, $max) {
+	padding: fn.clampify($min, $max);
+}
+
+@mixin padding-2(
+	$min-top-bottom,
+	$max-top-bottom,
+	$min-left-right,
+	$max-left-right
+) {
+	padding: fn.clampify($min-top-bottom, $max-top-bottom)
+		fn.clampify($min-left-right, $max-left-right);
+}
+
+@mixin padding-3(
+	$min-top,
+	$max-top,
+	$min-left-right,
+	$max-left-right,
+	$min-bottom,
+	$max-bottom
+) {
+	padding: fn.clampify($min-top, $max-top)
+		fn.clampify($min-left-right, $max-left-right)
+		fn.clampify($min-bottom, $max-bottom);
+}
+
+@mixin padding-4(
+	$min-top,
+	$max-top,
+	$min-right,
+	$max-right,
+	$min-bottom,
+	$max-bottom,
+	$min-left,
+	$max-left
+) {
+	padding: fn.clampify($min-top, $max-top) fn.clampify($min-right, $max-right)
+		fn.clampify($min-bottom, $max-bottom) fn.clampify($min-left, $max-left);
+}
+
+@mixin for-size($size) {
+	@if $size == tablet {
+		@media (min-width: 768px) {
+			@content;
+		}
+	} @else if $size == desktop {
+		@media (min-width: 1280px) {
+			@content;
+		}
+	} @else {
+		@media (min-width: #{$size}px) {
+			@content;
+		}
+	}
+}
+
+@mixin flex($dir: row, $jst: initial, $aln: initial) {
+	display: flex;
+	flex-direction: $dir;
+	justify-content: $jst;
+	align-items: $aln;
+}
+
+@mixin font($fam, $size-min, $size-max: false, $wgt: 400) {
+	font-family: $fam, sans-serif;
+	font-size: fn.clampify($size-min, $size-max);
+	font-weight: $wgt;
+}
+
+@mixin clamped($property, $min, $max) {
+	#{$property}: fn.clampify($min, $max);
+}
+
+//fix this next project
+@mixin clamped-shorthand-2(
+	$property,
+	$top-bottom-min-value,
+	$top-bottom-max-value,
+	$left-right-min-value,
+	$left-right-max-value
+) {
+	#{$property}: fn.clampify($top-bottom-min-value, $top-bottom-max-value)
+		fn.clampify($left-right-min-value, $left-right-max-value);
+}
+
+@mixin header-font() {
+	font-family: var.$f-header;
+	font-weight: 700;
+	@include clamped(font-size, 32, 48);
+}
